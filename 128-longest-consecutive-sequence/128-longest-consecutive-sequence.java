@@ -4,7 +4,6 @@ class Solution {
         if(n<2)return n;
         PriorityQueue<Integer> pq=new PriorityQueue<Integer>();
         for(int i:nums)pq.add(i);
-        System.out.println(pq);
         int res=1,max=1;
         int prev=pq.poll();
         while(pq.size()!=0){
