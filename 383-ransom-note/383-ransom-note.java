@@ -2,6 +2,7 @@ class Solution {
     public boolean canConstruct(String ransomNote, String magazine) {
         int s1=ransomNote.length(),s2=magazine.length();
         if(s1>s2)return false;
+        if(magazine.contains(ransomNote))return true;
         Map<Character,Integer> m1=new HashMap<>();
         Map<Character,Integer> m2=new HashMap<>();
         for(char c:ransomNote.toCharArray())
