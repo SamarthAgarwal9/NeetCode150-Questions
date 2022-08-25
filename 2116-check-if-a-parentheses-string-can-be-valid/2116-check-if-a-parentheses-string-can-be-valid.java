@@ -4,34 +4,19 @@ class Solution {
         if(s.length()%2!=0)return false;
         int remain = 0;
     for (int i = 0; i < n; i++) {
-      // check locked ')'
-      if (locked.charAt(i) == '1' && s.charAt(i) == ')') {
-        // don't have nothing left to pair ')'
-        if (remain == 0) {
-          return false;
-        } else {
-          remain--;
-        }
-      } else {
-        remain++;
-      }
+     if (locked.charAt(i) == '1' && s.charAt(i) == ')') {
+        if (remain == 0)return false;
+        else remain--;
+        } 
+    else remain++;
     }
-
-    // backward check '('
-    // number of unlocked and locked ')'
-    remain = 0;
+     remain = 0;
     for (int i = n - 1; i >= 0; i--) {
-      // check locked '('
       if (locked.charAt(i) == '1' && s.charAt(i) == '(') {
-        // don't have nothing left to pair '('
-        if (remain == 0) {
-          return false;
-        } else {
-          remain--;
-        }
-      } else {
-        remain++;
-      }
+        if (remain == 0) return false;
+         else  remain--;
+      } 
+        else remain++;
     }
 
     return true;
