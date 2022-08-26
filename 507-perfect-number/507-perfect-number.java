@@ -1,13 +1,10 @@
 class Solution {
     public boolean checkPerfectNumber(int num) {
-        int sum=0,co=num;
-        for(int i=1;i*i<=num;i++){
-            if(num%i==0){
-                sum+=i;
-            if(i*i!=num)
-                sum+=num/i;
-            }
+        int[] prime =new int[]{2,3,5,7,13,17,19,31};
+        for(int p:prime){
+            int val=((1<<(p-1))*((1<<p)-1));
+            if(val==num)return true;
         }
-        return sum==num*2?true:false;
+        return false;
     }
 }
