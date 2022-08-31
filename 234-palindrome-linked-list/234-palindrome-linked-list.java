@@ -12,28 +12,20 @@ class Solution {
     public boolean isPalindrome(ListNode head) {
         if(head==null||head.next==null)return true;
         ListNode slow=head,fast=head;
+        Stack<ListNode> st=new Stack<>();
         while(fast!=null && fast.next!=null){
+            st.push(slow);
             slow=slow.next;
             fast=fast.next.next;
         }
         if(fast!=null)slow=slow.next;
-        slow=reverse(slow);
-        fast=head;
+        
         while(slow!=null){
-            if(slow.val!=fast.val)return false;
+            if(slow.val!=st.peek().val)return false;
+            else st.pop();
             slow=slow.next;
-            fast=fast.next;
         }
         return true;
     }
-    public ListNode reverse(ListNode head){
-         ListNode curr=head,prev=null,temp=null;
-         while(curr!=null){
-            temp=curr.next;
-            curr.next=prev;
-            prev=curr;
-            curr=temp;
-        }
-        return  prev;
-    }
+   
 }
