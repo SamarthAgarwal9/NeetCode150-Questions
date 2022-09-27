@@ -37,7 +37,6 @@ class Solution {
         return temp;
     }
     public TreeNode del(TreeNode root){
-        if(root.left==null && root.right==null) return null;
         if(root.left==null)return root.right;
         if(root.right==null) return root.left;
         TreeNode rightChild=root.right;
