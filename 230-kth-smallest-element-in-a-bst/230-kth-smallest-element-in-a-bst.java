@@ -14,22 +14,25 @@
  * }
  */
 class Solution {
-   public void inorderSolve(TreeNode root, int k, int[] result)
-    {
-        if(root == null)return;
-        inorderSolve(root.left, k, result);
-        result[0]= result[0] + 1;
-        if(result[0] == k){
-            result[1]= root.val;
-            return;
-        }
-        inorderSolve(root.right, k, result);
-        return;
-    }
-    public int kthSmallest(TreeNode root, int k) 
-    {
-        int[] result= {0, -1};
-        inorderSolve(root, k, result);
-        return result[1]; 
-    }
+  public int kthSmallest(TreeNode root, int k) {
+      Stack<TreeNode> st = new Stack<>();
+      
+      while (root != null) {
+          st.push(root);
+          root = root.left;
+      }
+          
+      while (k != 0) {
+          TreeNode n = st.pop();
+          k--;
+          if (k == 0) return n.val;
+          TreeNode right = n.right;
+          while (right != null) {
+              st.push(right);
+              right = right.left;
+          }
+      }
+      
+      return -1; // never hit if k is valid
+}
 }
