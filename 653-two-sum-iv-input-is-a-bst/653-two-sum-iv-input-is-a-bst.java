@@ -31,6 +31,5 @@ class Solution {
         inorder(root.left);
         ans.add(root.val);
         inorder(root.right);
-        return ;
     }
 }
