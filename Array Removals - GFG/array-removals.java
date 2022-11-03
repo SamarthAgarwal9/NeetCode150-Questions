@@ -33,14 +33,12 @@ public class Main {
 
 class Solution {
     int removals(int[] arr, int n, int k) {
-        // code here
         Arrays.sort(arr);
         int res=0;
-        for(int i=0;i<n;i++){
-            for(int j=i;j<n;j++){
-                if(arr[j]-arr[i]<=k)res=Math.max(res,j-i+1);
-            }
-        }
+        for(int i=0;i<n;i++)
+            for(int j=i;j<n;j++)
+                if(arr[j]-arr[i]<=k)
+                res=Math.max(res,j-i+1);
         return n-res;
     }
 }
